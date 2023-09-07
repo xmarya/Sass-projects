@@ -1,0 +1,593 @@
+@charset "UTF-8";
+/*
+
+Grey light 4: #ccc
+
+Grey dark 1: #333
+Grey dark 2: #777
+Grey dark 3: #999
+
+*/
+:root {
+  --primary-colour: #eb2f64;
+  --primary-light-colour: #ff3366;
+  --primary-dark-colour: #ba265d;
+  --gray-light--1: #faf9f9;
+  --gray-light--2: #f4f2f2;
+  --gray-light--3: #f0eeee;
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+  --line: 1px solid var(--gray-light--2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: #777;
+  font-weight: 400;
+  line-height: 1.6;
+  background-image: linear-gradient(to right bottom, var(--primary-light-colour), var(--primary-dark-colour));
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.logo {
+  height: 3.25rem;
+  margin-left: 2rem;
+}
+
+.search-form {
+  flex: 0 0 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: var(--gray-light--2);
+  border: none;
+  padding: 0.7rem 2rem;
+  margin-right: -3.25rem;
+  border-radius: 100px;
+  width: 90%;
+  transition: all 0.2s;
+}
+.search-input:focus {
+  outline: none;
+  width: 100%;
+  background-color: var(--gray-light--3);
+}
+.search-input::-webkit-input-placeholder {
+  font-weight: 100;
+  color: #ccc;
+}
+
+.search-btn {
+  border: none;
+  background-color: var(--gray-light--2);
+}
+.search-btn:focus {
+  outline: none;
+}
+.search-btn:active {
+  transform: translateY(2px);
+}
+
+.search-icon {
+  height: 2rem;
+  width: 2rem;
+  fill: #999;
+}
+
+.user-nav {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+}
+.user-nav > * {
+  padding: 0 2rem;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.user-nav > *:hover {
+  background-color: var(--gray-light--2);
+}
+
+.icon-box {
+  position: relative;
+}
+
+.icon {
+  height: 2.25rem;
+  width: 2.25rem;
+  fill: #777;
+}
+
+.notification {
+  font-size: 0.8rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  border-radius: 100px;
+  background-color: var(--primary-colour);
+  color: #fff;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-photo {
+  height: 4rem;
+  border-radius: 100px;
+  margin-right: 1rem;
+}
+
+/*
+======================================
+          Navigation Section          
+======================================
+*/
+.side-nav {
+  font-size: 1.4rem;
+  list-style: none;
+  margin-top: 3.4rem;
+}
+
+.nav-item {
+  position: relative;
+}
+.nav-item:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%; /* so that it has the same height as the nav-item */
+  width: 3px;
+  background-color: var(--primary-colour);
+  transform: scaleY(0);
+  transition: transform 0.2s, width 0.3s 0.2s, background-color 0.1s;
+}
+
+.nav-item:hover::before,
+.nav-item--active::before {
+  transform: scaleY(1);
+  width: 100%; /* from 3px to 100% */
+}
+
+.nav-item:active::before {
+  background-color: var(--primary-light-colour);
+}
+
+.item-link:link,
+.item-link:visited {
+  color: var(--gray-light--1);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  padding: 1.5rem 3rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-right: 1.9rem;
+  fill: currentColor;
+}
+
+.legal {
+  font-size: 1.2rem;
+  color: #ccc;
+  text-align: center;
+  padding: 2.5rem;
+}
+
+/*
+======================================
+          Hotel-heading Section          
+======================================
+*/
+.gallery {
+  display: flex;
+}
+
+.gallery-photo {
+  width: 100%;
+  display: block;
+}
+
+.overview {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--gray-light--2);
+}
+
+.hotel-name {
+  font-size: 2.25rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1.5rem 3rem;
+}
+
+.rating-stars {
+  /*flex: 1;  it means that the 
+  element will occupy all the 
+  available space. we use this trick to 
+  create the huge space between 
+  the location ans star icons 
+  although it's no ideal*/
+  margin-right: auto;
+  display: flex; /* making the stars 
+side-by-side and to git rid from unwanted spaces */
+}
+
+.star-icon,
+.location-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: var(--primary-colour);
+}
+
+.hotel-location {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.location-icon {
+  margin-right: 0.5rem;
+}
+
+.btn-inline {
+  border: none;
+  color: var(--primary-colour);
+  font-size: inherit;
+  border-bottom: 1px solid currentColor;
+  padding: 0.2rem;
+  display: inline-block;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-inline span {
+  margin-left: 0.3rem;
+  transition: margin-left 0.2s;
+}
+.btn-inline:hover {
+  color: #333;
+}
+.btn-inline:hover span {
+  margin-left: 0.8rem;
+}
+.btn-inline:focus {
+  outline: none;
+  -webkit-animation: pulsate 1s infinite;
+          animation: pulsate 1s infinite;
+}
+
+@-webkit-keyframes pulsate {
+  0% {
+    transform: scale(1); /*returns to normal state*/
+    box-shadow: none;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1); /*returns to normal state*/
+    box-shadow: none;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+.rating-avrage {
+  background-color: var(--primary-colour);
+  color: #fff;
+  align-self: stretch;
+  padding: 0 2.25rem;
+  margin-left: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.average {
+  font-size: 2.25rem;
+  font-weight: 300;
+  margin-bottom: -0.3rem;
+}
+
+.rating-count {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+/*
+======================================
+          Recommedns Section          
+======================================
+*/
+.paragraph:not(:last-of-type) {
+  margin-bottom: 2rem;
+}
+
+.list {
+  list-style: none;
+  margin: 3rem 0;
+  padding: 3rem 0;
+  border-top: var(--line);
+  border-bottom: var(--line);
+  display: flex;
+  flex-wrap: wrap; /* to force each list-item to start once the element before ends */
+}
+
+.list-item {
+  flex: 0 0 50%; /* we want to have 2 elem side-by-side that's why we divided the space to half */
+  margin-bottom: 0.7rem;
+}
+.list-item::before {
+  content: "";
+  background-color: var(--primary-colour);
+  -webkit-mask-image: url(../img/chevron-thin-right.svg);
+          mask-image: url(../img/chevron-thin-right.svg);
+  -webkit-mask-size: cover;
+          mask-size: cover;
+  display: inline-block;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.7rem;
+}
+
+.recommend {
+  font-size: 1.3rem;
+  color: #999;
+  display: flex;
+  align-items: center;
+}
+
+.recommend-count {
+  margin-right: auto;
+}
+
+.friend-photo {
+  box-sizing: content-box;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 100px;
+  border: 3px solid #fff;
+}
+.friend-photo:not(:last-child) {
+  margin-right: -1.5rem;
+}
+
+.review-box {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.review {
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+  padding: 3rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.review::before {
+  content: "“";
+  position: absolute;
+  font-family: sans-serif;
+  top: -2.7rem;
+  left: -1rem;
+  font-size: 20rem;
+  line-height: 1;
+  color: var(--gray-light--2);
+  z-index: 1;
+}
+
+.review-text {
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+}
+
+.review-photo {
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 100px;
+  margin-right: 1.5rem;
+}
+
+.user-box {
+  margin-right: auto;
+}
+
+.user-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.review-date {
+  font-size: 1rem;
+  color: #999;
+}
+
+.review-rating {
+  color: var(--primary-colour);
+  font-size: 2.2rem;
+  font-weight: 300;
+}
+
+/*
+======================================
+              CTA Section          
+======================================
+*/
+.cta {
+  padding: 3.5rem 0;
+  text-align: center;
+}
+
+.book-now {
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-bottom: 3.5rem;
+}
+
+.btn {
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  border-radius: 100px;
+  border: none;
+  background-image: linear-gradient(to right, var(--primary-light-colour), var(--primary-dark-colour));
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.btn:hover {
+  background-image: linear-gradient(to left, var(--primary-light-colour), var(--primary-dark-colour));
+}
+.btn:hover .btn--visible {
+  transform: translateY(100%);
+}
+.btn:hover .btn--invisible {
+  top: 0;
+}
+.btn:focus {
+  outline: none;
+  -webkit-animation: pulsate 1s infinite;
+          animation: pulsate 1s infinite;
+}
+
+.btn--visible {
+  display: inline-block;
+  padding: 2rem 7.5rem;
+  height: 100%;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.btn--invisible {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: -100%;
+  padding: 2rem;
+  transition: all 0.2s;
+}
+
+.container {
+  max-width: 130rem;
+  margin: 8rem 4rem;
+  background-color: var(--gray-light--1);
+  box-shadow: var(--shadow-dark);
+  min-height: 50rem;
+}
+
+.header {
+  height: 7rem;
+  font-size: 1.4rem;
+  background-color: #fff;
+  border-bottom: var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contents {
+  display: flex;
+}
+
+.sidebar {
+  background-color: #333;
+  flex: 0 0 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hotel-view {
+  background-color: #fff;
+  flex: 1; /*it means we want the element
+to grow as much as it can*/
+}
+
+.hotel-detail {
+  display: flex;
+  padding: 4.5rem;
+  background-color: var(--gray-light--1);
+  border-bottom: var(--line);
+}
+
+.description {
+  flex: 0 0 60%;
+  font-size: 1.4rem;
+  padding: 3rem;
+  margin-right: 4.5rem;
+  background-color: #fff;
+  box-shadow: var(--shadow-light);
+}
+
+.user-review {
+  flex: 1; /* to obtain the remaining space after 60% */
+}/*# sourceMappingURL=main.css.map */

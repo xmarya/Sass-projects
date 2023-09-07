@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="sass/main.css" />
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png" />
+
+    <title>trillo &mdash; Your all-in-one booking app</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img src="img/logo.png" alt="logo" class="logo" />
+        <form action="#" class="search-form">
+          <input type="text" class="search-input" placeholder="Search hotels" />
+          <button class="search-btn">
+            <svg class="search-icon">
+              <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+            </svg>
+          </button>
+        </form>
+
+        <nav class="user-nav">
+          <div class="icon-box">
+            <svg class="icon">
+              <use xlink:href="img/sprite.svg#icon-bookmark"></use>
+            </svg>
+            <span class="notification">7</span>
+          </div>
+          <div class="icon-box">
+            <svg class="icon">
+              <use xlink:href="img/sprite.svg#icon-chat"></use>
+            </svg>
+            <span class="notification">11</span>
+          </div>
+          <div class="user-profile">
+            <img src="img/user-4.jpg" alt="Our user" class="user-photo" />
+            <span class="user-name">Jorden</span>
+          </div>
+        </nav>
+      </header>
+      <div class="contents">
+        <nav class="sidebar">
+          <ul class="side-nav">
+            <li class="nav-item nav-item--active">
+              <a href="#" class="item-link">
+                <svg class="nav-icon">
+                  <use xlink:href="img/sprite.svg#icon-home"></use>
+                </svg>
+                <span>Hotel</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="item-link">
+                <svg class="nav-icon">
+                  <use xlink:href="img/sprite.svg#icon-aircraft"></use>
+                </svg>
+                <span>Flight</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="item-link">
+                <svg class="nav-icon">
+                  <use xlink:href="img/sprite.svg#icon-key"></use>
+                </svg>
+                <span>Car rental</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="item-link">
+                <svg class="nav-icon">
+                  <use xlink:href="img/sprite.svg#icon-map"></use>
+                </svg>
+                <span>Tours</span>
+              </a>
+            </li>
+          </ul>
+          <div class="legal">&copy; 2022 by trillo. All rights reserved.</div>
+        </nav>
+        <main class="hotel-view">
+          <div class="gallery">
+            <figure class="gallery-item">
+              <img src="img/hotel-1.jpg" class="gallery-photo" alt="hotel" />
+            </figure>
+            <figure class="gallery-item">
+              <img src="img/hotel-2.jpg" class="gallery-photo" alt="hotel" />
+            </figure>
+            <figure class="gallery-item">
+              <img src="img/hotel-3.jpg" class="gallery-photo" alt="hotel" />
+            </figure>
+          </div>
+          <div class="overview">
+            <h1 class="hotel-name">Hotel Las Palmas</h1>
+            <div class="rating-stars">
+              <svg class="star-icon">
+                <use xlink:href="img/sprite.svg#icon-star"></use>
+              </svg>
+              <svg class="star-icon">
+                <use xlink:href="img/sprite.svg#icon-star"></use>
+              </svg>
+              <svg class="star-icon">
+                <use xlink:href="img/sprite.svg#icon-star"></use>
+              </svg>
+              <svg class="star-icon">
+                <use xlink:href="img/sprite.svg#icon-star"></use>
+              </svg>
+              <svg class="star-icon">
+                <use xlink:href="img/sprite.svg#icon-star"></use>
+              </svg>
+            </div>
+            <div class="hotel-location">
+              <svg class="location-icon">
+                <use xlink:href="img/sprite.svg#icon-location-pin"></use>
+              </svg>
+              <button class="btn-inline">farasan Island, Saudi Arabia</button>
+            </div>
+            <div class="rating-avrage">
+              <div class="average">8.3</div>
+              <div class="rating-count">582 ratings</div>
+            </div>
+          </div>
+          <div class="hotel-detail">
+            <div class="description">
+              <p class="paragraph">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Repudiandae hic, exercitationem omnis impedit accusantium
+                quisquam officiis reprehenderit et eaque aut maiores quis
+                voluptatum vel dicta reiciendis totam possimus eos quam.
+              </p>
+              <p class="paragraph">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Repudiandae hic, exercitationem omnis impedit accusantium
+                quisquam officiis reprehenderit et eaque aut maiores quis
+                voluptatum vel dicta reiciendis totam possimus eos quam.
+              </p>
+              <ul class="list">
+                <li class="list-item">Close to beact</li>
+                <li class="list-item">Breakfast included</li>
+                <li class="list-item">Free airport shuttle</li>
+                <li class="list-item">Free wi-fi in all rooms</li>
+                <li class="list-item">Air conditioning and heating</li>
+                <li class="list-item">Pets allowed</li>
+                <li class="list-item">We speak 8 languages</li>
+                <li class="list-item">Perfect for families</li>
+              </ul>
+              <div class="recommend">
+                <p class="recommend-count">
+                  Lucy and 3 other friends recommend this hotel.
+                </p>
+                <div class="friends">
+                  <img src="img/user-3.jpg" class="friend-photo" alt="" />
+                  <img src="img/user-6.jpg" class="friend-photo" alt="" />
+                  <img src="img/user.jpg" class="friend-photo" alt="" />
+                  <img src="img/user-5.jpg" class="friend-photo" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="review-box">
+              <figure class="review">
+                <blockquote class="review-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Corporis suscipit delectus quaerat rerum temporibus porro odit
+                  ea nesciunt quidem quia numquam nobis blanditiis recusandae
+                  accusantium, iste neque a ratione in.
+                </blockquote>
+                <figcaption class="review-user">
+                  <img src="img/user-1.jpg" class="review-photo" alt="" />
+                  <div class="user-box">
+                    <p class="user-name">Danial Smith</p>
+                    <p class="review-date">May 5th, 2019</p>
+                  </div>
+                  <div class="review-rating">7.3</div>
+                </figcaption>
+              </figure>
+              <figure class="review">
+                <blockquote class="review-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Corporis suscipit delectus quaerat rerum temporibus.
+                </blockquote>
+                <figcaption class="review-user">
+                  <img src="img/user-2.jpg" class="review-photo" alt="" />
+                  <div class="user-box">
+                    <p class="user-name">Saly Macarove</p>
+                    <p class="review-date">NOV 26th, 2021</p>
+                  </div>
+                  <div class="review-rating">9.1</div>
+                </figcaption>
+              </figure>
+              <button class="btn-inline">Show all <span>&rarr;</span></button>
+            </div>
+          </div>
+          <div class="cta">
+            <h2 class="book-now">
+              Good news! We have 4 FREE rooms for your selected days.
+            </h2>
+            <button class="btn">
+              <span class="btn--visible">Book now</span>
+              <span class="btn--invisible">Only 4 rooms left</span>
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

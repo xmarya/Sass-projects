@@ -1,0 +1,200 @@
+/*
+=================================
+         Sticky Navigation
+=================================
+*/
+
+/* So basically, the three steps for this to work is :
+to first have a checkbox, which will be hidden later.
+
+then second, have a label connected to that checkbox,
+which is where we click. And as you can guess, that will be the button here.
+
+And then the third step is to reveal the entire navigation here 
+in the background as soon as the checkbox becomes checked.
+And we can use the checked pseudo class in CSS to style this.
+ */
+
+.nav {
+  &__checkbox {
+    display: none;
+  }
+
+  &__icon {
+    position: relative;
+    margin-top: 3.3rem;
+
+    &,
+    &::before,
+    &::after {
+      display: inline-block;
+      width: 3rem;
+      height: 2px;
+      background-color: #333;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    &::before {
+      top: 0.8rem;
+    }
+
+    &::after {
+      bottom: 0.8rem;
+    }
+  }
+  &__checkbox:checked ~ &__bg {
+    transform: scale(45);
+  }
+
+  &__checkbox:checked ~ &__navigation {
+    opacity: 1;
+    width: 100%;
+    visibility: visible;
+  }
+
+  &__btn {
+    cursor: pointer;
+    background-color: #fff;
+    /*bigger h&w to hide the __bg*/
+    height: 7rem;
+    width: 7rem;
+    border-radius: 100%;
+    position: fixed;
+    box-shadow: 0 1rem 3rem rgba(#999, 0.1);
+    /*it's already bigger so we don't need to be on the same position as the __bg*/
+    top: 6rem;
+    right: 6rem;
+    z-index: 2000;
+
+    text-align: center;
+  }
+
+  &__btn:hover &__icon::before {
+    top: 1rem;
+  }
+
+  &__btn:hover &__icon::after {
+    bottom: 1rem;
+  }
+
+  /*create the X animation*/
+  &__checkbox:checked + &__btn &__icon {
+    /*instead of removing span's w&h which causes lose 
+    of before and after's w&h we just changed it's bc
+    to transparent to make it invisible*/
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__btn &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+    /* we want to rotate them 180deg
+    so 180 - 45 = 135
+    180 degrees is half a rotation, 
+    and if we subract 45 from that,
+    we end up basically with not a quarter 
+    of a circle, which is this one, 
+    but three quarters.*/
+  }
+
+  &__checkbox:checked + &__btn &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+
+  &__bg {
+    position: fixed; /*takes the element out-of-flow and keep i's position fixed on the page*/
+    height: 6rem;
+    width: 6rem;
+    border-radius: 100%;
+    background-image: radial-gradient(
+      $primary-colour-light,
+      $primary-colour-dark
+    );
+    top: 6.5rem;
+    right: 6.5rem;
+    // transform: scale(45);
+
+    z-index: 1000;
+    transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  &__navigation {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*to be between the __bn and __bg*/
+    z-index: 1500;
+    /*3 steps to hide the nav*/
+    opacity: 0;
+    width: 0;
+    visibility: hidden;
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  &__list {
+    list-style: none;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__item {
+    margin: 2rem;
+  }
+
+  &__link {
+    display: inline-block;
+    &:link,
+    &:visited {
+      font-size: 3rem;
+      font-weight: 300;
+      color: #fff;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      background-image: linear-gradient(
+        150deg,
+        transparent 0%,
+        transparent 50%,
+        #fff 50%
+      );
+      background-size: 300%;
+      transition: all 0.6s;
+
+      span {
+        margin-right: 1.5rem;
+        display: inline-block;
+      }
+    }
+
+    &:hover,
+    &:active {
+      background-position: 100% 100%;
+      color: $primary-colour;
+      transform: translateX(1rem);
+    }
+  }
+  /*
+While this animation seems tricky at first, 
+once you understand that the background-position property operates relative 
+to the container / whole element, things sort of fall into place.
+First, note that the default position of the background image is set to 0% 0%  
+(or the top left corner of the container).
+Moving a background image by X% means it will align the X% point in the image 
+to the X% point in the container.
+For example, 50% means it will align the middle of the image with the middle of 
+the container. 100% means it will align the last pixel of the image with the last pixel 
+of the container ← this is key to understanding the animation.
+  */
+}

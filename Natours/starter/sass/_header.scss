@@ -1,0 +1,199 @@
+/*
+=================================
+            Header
+=================================
+*/
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgb($primary-colour-light, 0.8),
+      rgb($primary-colour-dark, 0.8)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /* specify a polygon in which the image or the element
+     will still be visibale .
+    clip-path: polygon(x y, x y, x y);*/
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.logo {
+  height: 3.5rem;
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* aligning the bottom */
+  text-align: center;
+}
+
+.primary-heading {
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+}
+
+.secondary-heading {
+  display: inline;
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  background-image: linear-gradient(
+    to right,
+    $primary-colour-light,
+    $primary-colour-dark
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+.tertiary-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.paragraph {
+  font-size: 1.6rem;
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+.centre-text {
+  text-align: center;
+}
+
+.m-top {
+  margin-top: 8rem;
+}
+
+.m-bottom {
+  margin-bottom: 2rem;
+}
+
+/*
+=================================
+            Button
+=================================
+*/
+
+.btn,
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  text-transform: uppercase;
+  padding: 1.5rem 4rem;
+  border-radius: 100px;
+  transition: all 0.2s;
+
+  position: relative;
+
+  // styles for <button>
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgb(0, 0, 0, 0.3);
+}
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgb(0, 0, 0, 0.3);
+}
+
+.btn--animated {
+  animation: moveInBtn 0.5s ease-out 0.75s;
+  /* last parameter is the delay */
+  animation-fill-mode: backwards;
+  /*
+   what this does, is that it will automatically apply
+the styles up to zero percent before the animation starts.
+So, again, these styles will now be applied
+before the animation starts simply by using the
+animation fill mode and set it to backwards.
+  */
+}
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn--green {
+  background-color: $primary-colour;
+  color: #fff;
+}
+
+.btn::after {
+  position: absolute;
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 100px;
+  z-index: -1;
+
+  transition: all 0.4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn--green::after {
+  background-color: $primary-colour;
+}
+
+.btn:hover::after {
+  background-color: inherit;
+  transform: scaleX(1.2) scaleY(1.4);
+  opacity: 0; /* to fade it*/
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    color: $primary-colour;
+    font-size: 1.6rem;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $primary-colour;
+    padding: 0.3rem;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    background-color: $primary-colour;
+    color: #fff;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+  }
+}

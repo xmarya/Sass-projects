@@ -1,0 +1,150 @@
+:root {
+  /* // COLOR VARIABLES */
+  --color-primary: #c69963;
+  --color-primary-dark: #b28451;
+
+  --color-secondary: #101d2c;
+
+  --color-grey-light-1: #f9f7f6;
+  --color-grey-light-2: #aaa;
+
+  --color-grey-dark-1: #54483a;
+  --color-grey-dark-2: #6d5d4b;
+
+  /* // FONT VARIABLES */
+  --font-primary: "Nunito", sans-serif;
+  --font-display: "Josefin Sans", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+@media only screen and (max-width: 75em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-grey-dark-2);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  grid-template-columns:
+    [sidebar-start] 8rem [sidebar-end full-start]
+    minmax(6rem, 1fr) [centre-start]
+    repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+    [centre-end] minmax(6rem, 1fr) [full-end];
+
+  /* // 8rem for the sidebar.
+  // 1fr in both side to add 2 columns
+  // to centre the content.
+  //1140/8 columns = 142.5 and
+  //minmax(min-content) to make it responsive
+  //and they mean the maximum should be 14rem
+  //but it can be lower BUT NEVER low than the
+  // main content.
+  // the widthe should be between the min and the 14rem. */
+}
+
+@media only screen and (max-width: 62.5em) {
+  .grid-container {
+    grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns:
+      [full-start]
+      minmax(6rem, 1fr) [centre-start]
+      repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+      [centre-end] minmax(6rem, 1fr) [full-end];
+  }
+
+  /*the 6rem of the first row is no longer means 60px
+ it's 48px because 1rem is 8px now */
+}
+
+@media only screen and (max-width: 50em) {
+  .grid-container {
+    grid-template-rows: 6rem calc(100vh - 6rem) min-content min-content min-content repeat(3, min-content);
+  }
+}
+
+.primary-heading {
+  font-family: var(--font-display);
+  color: var(--color-grey-light-1);
+  font-size: 4.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.secondary-heading {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.tertiary-heading {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+}
+
+.heading-4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.9rem;
+}
+
+.heading--light {
+  color: var(--color-grey-light-1);
+}
+
+.heading--dark {
+  color: var(--color-grey-dark-1);
+}
+
+.btn {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border-radius: 0;
+  border: none;
+  transform: uppercase;
+  padding: 1.8rem 3rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.bottom-ms {
+  margin-bottom: 2rem;
+}
+.bottom-md {
+  margin-bottom: 3rem;
+}
+.bottom-mg {
+  margin-bottom: 4rem;
+}
+.bottom-mh {
+  margin-bottom: 8rem;
+}
